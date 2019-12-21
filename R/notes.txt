@@ -1,0 +1,7 @@
+"Slice" of n-D tensor of the "object" that contains all the symmetries
+  as lower dimensional sub-objects.
+
+Webern and matmul, sloniminsky "grandmother" chord idea to derive (a)symmetrical
+embedded shapes
+
+

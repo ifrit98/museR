@@ -5,8 +5,7 @@
 # Paths through complex plane (harmonic sequences, e.g. Roel's world)
 # Tone circle diagarams with subset shapes in modulus space! (e.g.
 # Augmented triad as equilateral triangle w 60 degree angles)
-# Break out museR into its own package from JSGutils
-# Work on NBA scraping tools (Python/shell compatibility)
+
 
 
 #' Return direct ratios of just intonation system
@@ -71,7 +70,7 @@ solfeggio_freqs <- function(simplify = FALSE, extended = FALSE) {
   c(base, lag) %<-% solfeggio_ratios(return_both = TRUE)
 
   out <- vector("numeric", n)
-  quo <- JSGutils::mod(n, length(base))[[1]]
+  quo <- mod(n, length(base))[[1]]
   for (i in 1:quo) {
     s <- sapply(base, function(x) `*`(p, x))
     browser()
@@ -89,7 +88,7 @@ solfeggio_scale_n <- function(n, p = 174) {
   lag_ratios <- solfeggio_ratios(return_both = TRUE)[[2]]
   lag_ratios <- lag_ratios[-1]
 
-  c(reps, extra) %<-% JSGutils::mod(n + 1, length(lag_ratios))
+  c(reps, extra) %<-% mod(n + 1, length(lag_ratios))
 
   num_reps <- if (extra > 0) reps + 1 else reps
 
@@ -164,7 +163,7 @@ tone_random_walk <-
       purrr::map2(seq, updown, function(x, y) x * y) %>% unlist
 
     f <- function(p, x) {
-      c(i, d) %<-% JSGutils::split_numeric(x)
+      c(i, d) %<-% split_numeric(x)
       p <- p + p * i * d
       p
     }
@@ -193,10 +192,35 @@ swap_nms_vals <- function(x) {
 flip_names_and_values <- swap_nms_vals
 
 
+# WIP
+nearest_pitch <- function(f) {
+  445 -> 440 -> A
+  diffs <- map2((pitch.hertz.440 %>% rotate(1)), pitch.hertz.440, `-`)
+
+  medians <-
+    diffs %>%
+    unname %>%
+    unlist  %>% `/`(., 2) %>%
+    `+`(., pitch.hertz.440 %>% unlist %>% unname)
+
+  op <- pitch.hertz.440 %>% unlist %>% unname
+  #  (p >= 440 & p <= (453))
+  full <- JSGutils:::interleave2(op, medians)
+
+  lapply(1:(length(full)-1), function(i) {
+    print(sprintf("%f >= %f && %f <= %f", p, full[[i]], p, full[[i+1]]))
+    (p >= full[[1]]) && (p < full[[2]])
+  })
+
+
+
+}
+
+
 #' @export
 hertz_to_pitch <- function(f) {
   within1 <- function(x) f %within1% x
-  chromatic[sapply(pitch.hertz.440, within1)]
+  chromatic[sapply(pitch.hertz.440, within2)]
 }
 
 

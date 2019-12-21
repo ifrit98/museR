@@ -14,6 +14,13 @@ nlist <- function(values) {
 }
 
 
+rotate <- function(x, n) {
+  stopifnot(n < length(x))
+  if (n == 0) return(x)
+
+  c(x[(n+1):length(x)], x[1:n])
+}
+
 
 #' @export
 chromatic <-
@@ -175,6 +182,21 @@ get_divisors <- function(x) {
 #' @export
 `%within1%` <- function(x, y) {
   in_range(x, y, 1L)
+}
+
+
+`%within2%` <- function(x, y) {
+  in_range(x, y, 2L)
+}
+
+
+`%within5%` <- function(x, y) {
+  in_range(x, y, 2L)
+}
+
+
+`%within.1%` <- function(x, y) {
+  in_range(x, y, 0.1)
 }
 
 

@@ -112,6 +112,7 @@ ToneCircle <- R6::R6Class(
   )
 )
 
+
 #' Create a new tone circle.
 #'
 #' @param v Vertices of the tone circle
