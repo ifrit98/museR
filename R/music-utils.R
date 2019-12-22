@@ -193,8 +193,7 @@ flip_names_and_values <- swap_nms_vals
 
 
 # WIP
-nearest_pitch <- function(f) {
-  445 -> 440 -> A
+nearest_pitch <- function(freq, base = 440) {
   diffs <- map2((pitch.hertz.440 %>% rotate(1)), pitch.hertz.440, `-`)
 
   medians <-
@@ -203,17 +202,16 @@ nearest_pitch <- function(f) {
     unlist  %>% `/`(., 2) %>%
     `+`(., pitch.hertz.440 %>% unlist %>% unname)
 
-  op <- pitch.hertz.440 %>% unlist %>% unname
-  #  (p >= 440 & p <= (453))
-  full <- JSGutils:::interleave2(op, medians)
+  modfreq <- freq %% base
+  zeroed  <- medians %% base
+  zeroed[[length(zeroed)]] <- base # retplaces correct val introduced in diffs
 
-  lapply(1:(length(full)-1), function(i) {
-    print(sprintf("%f >= %f && %f <= %f", p, full[[i]], p, full[[i+1]]))
-    (p >= full[[1]]) && (p < full[[2]])
-  })
+  idx <- (!(modfreq < zeroed)) %>% as.numeric() %>% sum() + 1
 
+  pitch <- names(pitch.hertz.440)[[idx]]
 
-
+  # TODO: Make this not hacky...
+  if (pitch == "A2") return("A") else return(pitch)
 }
 
 
