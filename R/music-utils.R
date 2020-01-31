@@ -83,6 +83,7 @@ solfeggio_freqs <- function(simplify = FALSE, extended = FALSE) {
 
 
 #' Arbitrary length solfeggio scale
+#' @importFrom zeallot %<-%
 #' @export
 solfeggio_scale_n <- function(n, p = 174) {
   lag_ratios <- solfeggio_ratios(return_both = TRUE)[[2]]
@@ -112,6 +113,7 @@ solfeggio_scale_n <- function(n, p = 174) {
 
 
 #' Get numeric ratio for solfeggio scale
+#' @importFrom magrittr %>%
 #' @export
 solfeggio_ratios <- function(extended = TRUE, return_both = FALSE) {
   tones  <- solfeggio_freqs(TRUE, extended)
