@@ -184,24 +184,20 @@ demo_untwisting <- function(examples = 10, .rotations = 100) {
 
   df <- demo_df(examples)
 
-  # Z <- untwist.e(x, y, f, N)
-  # untwist.viz(x, y, .S)
+  Z <- untwist.e(x, y, df$solfeg, .rotations)
+
   untwist.viz(x, y, df$solfeg)
 
-  # untwist.viz(x, y, .F2)
-  # untwist.viz(x, y, .F2a, N)
   untwist.viz(x, y, df$mul17)
 
-  # untwist.viz(x, y, .F3, N)
   untwist.viz(x, y, df$primes)
 
-  # untwist.viz(x, y, .F4, N)
   untwist.viz(x, y, df$seq)
 
-  ggplot2::qplot(Re(Z), Im(Z), geom = 'path')
+  # ggplot2::qplot(Re(Z), Im(Z), geom = 'path')
 
   f <- 512
-  N <- n
+  N <- 10
   untw <- purrr::partial(untwist, f = f, N = N)
   points <- purrr::pmap(list(k, x, y), untw)
 

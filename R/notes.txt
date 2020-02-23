@@ -1,7 +1,10 @@
 "Slice" of n-D tensor of the "object" that contains all the symmetries
   as lower dimensional sub-objects.
 
+Vector space (or modular space) of enharmonic nodes -2D grid of base notes/sonority roots
+
+
 Webern and matmul, sloniminsky "grandmother" chord idea to derive (a)symmetrical
 embedded shapes
-
+ - TODO: Implement grandmother chord functions to return variations
 

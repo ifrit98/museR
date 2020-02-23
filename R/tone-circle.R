@@ -204,4 +204,27 @@ plotlys <- function() {
       fill = 'toself' # 'tozeroy'
     ))
 
+  (all <- plot_ly(
+    type = "scatterpolar",
+    mode = "lines"
+  ) %>%
+      add_trace(
+        r = rep(1, 5),
+        theta = pf[c('A', 'C', 'D', 'E', 'G')] %>% unname(),
+        name = "Pentatonic",
+        fill = 'toself' # 'tozeroy'
+      ) %>%
+      add_trace(
+        r = rep(1, 3),
+        theta = pf[c('A', 'C#', "F")] %>% unname(),
+        name = "Augmented",
+        fill = 'toself' # 'tozeroy'
+      ) %>%
+      add_trace(
+        r = rep(1, 4),
+        theta = pf[c('A', 'C', 'Eb', 'F#')] %>% unname(), # c(0, 90, 180, 270),
+        name = "Diminished",
+        fill = 'toself' # 'tozeroy'
+      ))
+
 }
