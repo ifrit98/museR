@@ -174,8 +174,8 @@ plotlys <- function() {
       add_trace(
         r = rep(1, 4),
         theta = pf[c('A', 'C', 'Eb', 'F#')] %>% unname(), # c(0, 90, 180, 270),
-        name = "Diminished",
-        fill = 'toself' # 'tozeroy'
+        name = "Diminished"
+       # fill = 'toself' # 'tozeroy'
       ))
 
   (aug <- plot_ly(
@@ -228,3 +228,21 @@ plotlys <- function() {
       ))
 
 }
+
+
+# TODO: implement tonnetz grid and it's dual: "chicken-wire" torus
+# TODO: implement function to create tone circle with overlapping sonorities.  I.e. dim,
+# TODO: Infinite Cyclic graph for representation of tonnetz
+#        (6 nodes, 7th note center of hexagon, or corner vertex of cube)
+# <- THIS IS WHWY COMPUTER SCIENCE ALGORITHMS AND GRAPH THEORY ARE IMPORTANT!
+f <- function() {
+
+
+}
+
+
+
+
+
+
+
