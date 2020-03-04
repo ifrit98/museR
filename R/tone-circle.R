@@ -15,6 +15,7 @@ ToneCircle <- R6::R6Class(
    no_vertices = NULL,
    frequencies = NULL,
    intervals = NULL,
+   notes = NULL,
    ratios = NULL,
    n_tones = NULL,
    angle = NULL,
@@ -65,6 +66,7 @@ ToneCircle <- R6::R6Class(
     self$angle_type     <- self$get_angle_type()
     self$ratios         <- tone_ratios(self$n_tones)
     self$frequencies    <- self$ratios * base
+    self$notes          <- sapply(self$frequencies, hertz_to_pitch)
     self$freq_indices   <- seq(1, self$n_tones, self$step_size)
     self$step_freqs     <- self$frequencies[self$freq_indices]
     self$step_ratio     <- self$step_freqs[2] / self$step_freqs[1]
@@ -134,6 +136,7 @@ pitch_to_angle <- function(pitch, orientation = "chromatic") {
   classes <- c("A", "A#", "Bb", "B", "B#", "Cb", "C", "C#", "Db", "D", "D#",
                "Eb", "E", "E#", "Fb", "F", "F#", "Gb", "G", "G#", "Ab")
 
+
   stopifnot(pitch %in% classes, orientation %in% c("chromatic", "fifths"))
 
   if (orientation == "chromatic")
@@ -160,12 +163,31 @@ pitch_to_angle <- function(pitch, orientation = "chromatic") {
     )
 }
 
+plot.tonecircle <- function(tc) {
 
+}
+
+offset <-
+  function(shift) lapply(tc$frequencies, hertz_to_angle) %>% map(~..1 + shift)
+
+# TODO: Draw tone circle like mediant mandala
 
 plotlys <- function() {
   library(plotly)
   pf <- PitchAngle.F()
   pc <- PitchAngle.C()
+
+  (chrom <- plot_ly(
+   type = "scatterpolar",
+   mode = "lines"
+  ) %>%
+    add_trace(
+      r = rep(1, length(tc$frequencies)),
+      theta = lapply(tc$frequencies, hertz_to_angle),
+      name = "chromatic",
+      fill = "toself"
+    ))
+
   # TODO: Link up pitch_to_angle() with theta = c() argument
   (dim <- plot_ly(
     type = "scatterpolar",
@@ -174,8 +196,8 @@ plotlys <- function() {
       add_trace(
         r = rep(1, 4),
         theta = pf[c('A', 'C', 'Eb', 'F#')] %>% unname(), # c(0, 90, 180, 270),
-        name = "Diminished"
-       # fill = 'toself' # 'tozeroy'
+        name = "Diminished",
+       fill = 'toself' # 'tozeroy'
       ))
 
   (aug <- plot_ly(
@@ -226,7 +248,6 @@ plotlys <- function() {
         name = "Diminished",
         fill = 'toself' # 'tozeroy'
       ))
-
 }
 
 

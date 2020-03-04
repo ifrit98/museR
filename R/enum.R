@@ -99,7 +99,7 @@ just need to define it."
 takes a vector of strings and a name and returns an enum object. Most of this is
 just validation."
 
-#' create an enum S3 class given vector of strings and a enum classname
+#' Create enum S3 class given a vector of strings and an enum classname
 #'
 #' Factory function enum that takes a vector of strings and a name and  returns
 #'   an enum object. Dispatches on case-insensitive indexing argument list
@@ -108,7 +108,7 @@ just validation."
 #' @export
 #' @examples
 #'
-#' # col <- enum(c("BLUE", "red", "Black"), name = "TheColors")
+#' col <- enum(c("BLUE", "red", "Black"), name = "TheColors")
 #' col$R
 #' #> [1] "RED"
 #' class(col)

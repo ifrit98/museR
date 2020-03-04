@@ -194,9 +194,12 @@ swap_nms_vals <- function(x) {
 flip_names_and_values <- swap_nms_vals
 
 
-# WIP
+
+#' Find closest pitch class symbol for an incoming frequency
+#' @export
 nearest_pitch <- function(freq, base = 440) {
-  diffs <- map2((pitch.hertz.440 %>% rotate(1)), pitch.hertz.440, `-`)
+  pitch.hertz <- Pitch.Hertz(base)
+  diffs <- map2((pitch.hertz %>% rotate(1)), pitch.hertz, `-`)
 
   medians <-
     diffs %>%
@@ -218,15 +221,21 @@ nearest_pitch <- function(freq, base = 440) {
 
 
 #' @export
-hertz_to_pitch <- function(f) {
-  within1 <- function(x) f %within1% x
-  chromatic[sapply(pitch.hertz.440, within2)]
-}
+hertz_to_pitch <- function(hz) nearest_pitch(hz)
 
+#' @export
+hz2p <- hertz_to_pitch
 
 #' @export
 pitch_to_hertz <- function(p) {
   pitch.hertz.440[[substitute(p)]]
+}
+
+
+#' @export
+hertz_to_angle <- function(hz) {
+  np <- nearest_pitch(hz)
+  pitch_to_angle(np)
 }
 
 

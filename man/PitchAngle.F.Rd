@@ -2,12 +2,12 @@
 % Please edit documentation in R/pitchclass.R
 \name{PitchAngle.F}
 \alias{PitchAngle.F}
-\title{Enum containing pitch angles, fourth-based tone circle (counter-clockwise)}
+\title{Enum containing pitch angles for a fourth-based tone circle (counter-clockwise)}
 \usage{
 PitchAngle.F()
 }
 \description{
-Enum containing pitch angles, fourth-based tone circle (counter-clockwise)
+Enum containing pitch angles for a fourth-based tone circle (counter-clockwise)
 }
 \details{
 returned angles are in 30 degree increments along the polar axis

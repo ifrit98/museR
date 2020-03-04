@@ -2,12 +2,12 @@
 % Please edit documentation in R/pitchclass.R
 \name{PitchAngle.C}
 \alias{PitchAngle.C}
-\title{Enum containing pitch angles for a chromatic tone circle (counter-clockwise)}
+\title{Enum containing pitch angles, chromatic tone circle (counter-clockwise)}
 \usage{
 PitchAngle.C()
 }
 \description{
-Enum containing pitch angles for a chromatic tone circle (counter-clockwise)
+Enum containing pitch angles, chromatic tone circle (counter-clockwise)
 }
 \details{
 returned angles are in 30 degree increments along the polar axis

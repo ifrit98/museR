@@ -1,3 +1,6 @@
+
+I LIKE MAKING PACKAGES AND BUILDING NEAT THINGS THAT ARE AESTHETICALLY & FUNCTIONALLY PLEASING
+
 "Slice" of n-D tensor of the "object" that contains all the symmetries
   as lower dimensional sub-objects.
 
@@ -8,3 +11,48 @@ Webern and matmul, sloniminsky "grandmother" chord idea to derive (a)symmetrical
 embedded shapes
  - TODO: Implement grandmother chord functions to return variations
 
+
+Identify all shapes inside median mandala.  paths...
+36 possible keys (Maj, parallel min, counter parallel min)
+12 root positions - with 6 vectors
+Where do the mediant mandala vertices cross? 3D models to see of `nodes of crossing`
+How to describe programmatically: Angles, Vectors, Polar, Shlafli, Plato, Topology, Cartesian?
+
+Vector calculus to describe locations? -> arrows to 12 or 36 `base nodes`
+Angles (deg/rad) for 12 base nodes, {-1, 0, +1} for parallel min, maj, counter parallel min
+--Think gyroscope--
+(x, y)
+x <- 12 positions { C, Db, D, Eb, E, F, F#, G, Ab, A, Bb, B } (angle? regressed value)
+- Scale angles between (0, 1) -> e.g. 90 = 0.25
+y <- 3 orientations (p min/cp min/maj) { -1, 0, +1 } (tanh?)
+
+HOT TODO:
+Make neural network to learn patterns from real chord symbols, interpreted in this framework
+E.g. pairs: {Bb7, Fmaj} -> {(270, 0), (120, 0)}
+
+  Twins      Siblings          Cousins
+4ths/5ths  Submediants   Chromatic Submediants
+
+Add 4ths/5ths (twins):
+Add submediants (siblings): C -> (a, e)
+Add chromatic submediants:  C -> (Ab, Eb)
+
+https://en.wikipedia.org/wiki/Platonic_solid
+https://en.wikipedia.org/wiki/Schl%C3%A4fli_symbol
+https://en.wikipedia.org/wiki/Star_polygon
+https://en.wikipedia.org/wiki/Convex_polytope
+https://en.wikipedia.org/wiki/Tessellation
+
+
+# DATA
+Each point is a sequence:
+[(x0,y0),  ..., (xn,yn)]
+
+What are we training on and why?
+Seq2seq where truth is 1 timestep ahead?
+"Paths": learn basic shapes (square, triangle, circle)
+Is this an unsupervised problem? (clustering, kernel regression, etc)
+
+
+
+enums for classes

@@ -2,7 +2,7 @@
 % Please edit documentation in R/enum.R
 \name{enum}
 \alias{enum}
-\title{create an enum S3 class given vector of strings and a enum classname}
+\title{Create enum S3 class given a vector of strings and an enum classname}
 \usage{
 enum(enums, name = NULL)
 }
@@ -17,7 +17,7 @@ Factory function enum that takes a vector of strings and a name and  returns
 }
 \examples{
 
-# col <- enum(c("BLUE", "red", "Black"), name = "TheColors")
+col <- enum(c("BLUE", "red", "Black"), name = "TheColors")
 col$R
 #> [1] "RED"
 class(col)

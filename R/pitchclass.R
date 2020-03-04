@@ -1,9 +1,11 @@
 
-#' Enum containing pitch angles for a chromatic tone circle (counter-clockwise)
+
+
+#' Enum containing pitch angles for a fourth-based tone circle (counter-clockwise)
 #'
 #' @details returned angles are in 30 degree increments along the polar axis
 #' @export
-PitchAngle.C <- function() {
+PitchAngle.F <- function() {
   structure(
     list(
       "A" = 0,   "A#" = 210, "Bb" = 210,
@@ -14,16 +16,16 @@ PitchAngle.C <- function() {
       "F" = 240, "F#" = 90,  "Gb" = 90,
       "G" = 300, "G#" = 150, "Ab" = 150
     ),
-    class = c("PitchAngle_c", "enum", "list")
+    class = c("PitchAngle_fourths", "enum", "list")
   )
 }
 
 
-#' Enum containing pitch angles, fourth-based tone circle (counter-clockwise)
+#' Enum containing pitch angles, chromatic tone circle (counter-clockwise)
 #'
 #' @details returned angles are in 30 degree increments along the polar axis
 #' @export
-PitchAngle.F <- function() {
+PitchAngle.C <- function() {
   structure(
     list(
       "A" = 0,   "A#" = 30,  "Bb" = 30,
@@ -34,7 +36,7 @@ PitchAngle.F <- function() {
       "F" = 240, "F#" = 270, "Gb" = 270,
       "G" = 300, "G#" = 330, "Ab" = 330
     ),
-    class = c("PitchAngle_f", "enum", "list")
+    class = c("PitchAngle_chromatic", "enum", "list")
   )
 }
 
@@ -67,6 +69,7 @@ Pitch.Hertz <- function(base = 440) {
 #' @export
 pitch.hertz.440 <- Pitch.Hertz()
 
+phz.440 <- pitch.hertz.440
 
 
 #' @export
@@ -82,6 +85,8 @@ Pitch.Hertz.Int <- function(base = 440) {
 
 #' @export
 pitch.hertz.int <- Pitch.Hertz.Int()
+
+phz.int <- pitch.hertz.int
 
 
 #' Enum consisting of Just Intonation ratios
